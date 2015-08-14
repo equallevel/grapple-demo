@@ -4,23 +4,18 @@
 		{ width: 100, label: "City" },
 		{ width: 175, label: "State" },
 		{ width: 175, label: "County" },
-		{ width: 300 },
 	]
 %>
-
-<%= table_for(columns, @zip_codes, builder: Grapple::DataGridBuilder, class: 'table') do |t| %>
+<div class="grapple">
+<%= table_for(columns, @zip_codes, builder: Grapple::DataGridBuilder) do |t| %>
 	<%= t.colgroup %>
-	<%= t.column_headings  %>
+	<%= t.header %>
 	<%= t.footer %>
 	<%= t.body do |zip_code| %>
 		<td><%= zip_code.zip %></td>
 		<td><%= zip_code.city %></td>
 		<td><%= zip_code.state.name rescue "" %></td>
 		<td><%= zip_code.county %></td>
-		<td>
-			<%= link_to 'Show', zip_code_path(zip_code) %><br>
-			<%= link_to 'Edit', edit_zip_code_path(zip_code) %><br>
-			<%= link_to 'Destroy', zip_code_path(zip_code), method: :delete, data: { confirm: 'Are you sure?' } %>
-		</td>
 	<% end %>
 <% end %>
+</div>
