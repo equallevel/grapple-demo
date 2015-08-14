@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  zip: MyString
+  city: MyString
+  county: MyString
+  state_id: 1
+  latitude: 9.99
+  longitude: 9.99
+
+two:
+  zip: MyString
+  city: MyString
+  county: MyString
+  state_id: 1
+  latitude: 9.99
+  longitude: 9.99

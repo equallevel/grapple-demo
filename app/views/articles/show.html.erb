@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <div>
+      <div>
+        <h1 class="jumbotron text-center"><%= @article.title %></h1>
+      </div>
+      <div>
+        <p><%= @article.text %></p>
+      </div>
+    </div>
+    <p>
+      <%= link_to 'Back to index', articles_path %><br>
+      <%= link_to 'Edit', edit_article_path(@article) %>
+    </p>
+    <div>
+      <h2 class="text-center">Comments</h2>
+      <%= render @article.comments %>
+    </div>
+    
+    <div class="well">
+      <h2 class="text-center">Add a comment</h2>
+      <%= render 'comments/form' %>
+    </div>
+  </div>
+</div>

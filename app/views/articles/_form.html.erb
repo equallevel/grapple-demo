@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 well">
+    
+    <%= form_for @article do |f| %>
+    
+      <% if @article.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@article.errors.count, "error") %> prohibitied this article from being saved:
+          </h2>
+          <ul>
+            <% @article.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    
+      <div class="form-group">
+        <%= f.label :title %><br>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+    
+      <div class="form-group">
+        <%= f.label :text %><br>
+        <%= f.text_area :text, class: 'form-control' %>
+      </div>
+    
+      <div class="form-group">
+        <%= f.submit class: 'btn btn-primary' %>
+      </div>
+    
+    <% end %>
+    
+    <%= link_to 'Back', articles_path %>
+  </div>
+</div>

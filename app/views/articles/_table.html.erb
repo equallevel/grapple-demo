@@ -1,0 +1,44 @@
+<% 
+	columns = [
+		{ label: '' },
+		{ label: :title, sort: 'title' },
+		{ label: :contents, sort: 'text' },
+		{ label: :created_at, sort: 'created_at' }
+	]
+	
+%>
+<%= table_for(columns, @articles) do |t| %>
+	<%= t.colgroup %>
+	<%= t.header  %>
+		
+	<%# end %>
+	<%= t.footer %>
+	<%= t.body do |article| %>
+		<td></td>
+		<td><%= article.title %></td>
+		<td></td>
+		<td></td>
+	<% end %>
+<% end %>
+<!--
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h1 class="text-center">Articles Index</h1>
+    <%= link_to "New Article", new_article_path %>
+    <% @articles.each do |article| %>
+      <div class="well">
+        <div>
+          <strong>Title:</strong>
+          <%=  %>
+        </div>
+        <div>
+          <%= article.text %>
+        </div>
+        <%= link_to 'Show', article_path(article) %><br>
+        <%= link_to 'Edit', edit_article_path(article) %><br>
+        <%= link_to 'Destroy', article_path(article), method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
+  </div>
+</div>
+-->

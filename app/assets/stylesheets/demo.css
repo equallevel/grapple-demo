@@ -1,0 +1,17 @@
+body {
+	padding: 0;
+	margin: 0;
+	font: 13px/1.231 arial,helvetica,clean,sans-serif;
+}
+
+.header {
+	background-color: #F5F5F5;
+	border-bottom: 1px solid #E5E5E5;
+	height: 50px;
+	font-size: 30px;
+	padding-left: 10px;
+}
+
+.container {
+	padding: 10px;
+}
