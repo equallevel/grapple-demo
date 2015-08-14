@@ -12,8 +12,13 @@ Rails.application.routes.draw do
   resources :articles do
     resources :comments
   end
+	
+	resources :basic_html
+	resources :pagination
+	resources :sorting
+	resources :ajax
   
-  root 'home#index'
+  root 'home#index', as: 'home'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

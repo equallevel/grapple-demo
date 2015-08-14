@@ -1,0 +1,30 @@
+<%
+	columns = [
+		{ width: 100 },
+		{ width: 200 },
+		{ width: 150 },
+		{ width: 300 },
+	]
+%>
+<%= table_for(columns, @articles, builder: Grapple::HtmlTableBuilder, class: 'table') do |t| %>
+	<%= t.colgroup %>
+	<%= t.header do %>
+		<tr>
+			<th>Title</th>
+			<th>Text</th>
+			<th>Created At</th>
+			<th></th>
+		</tr>
+	<% end %>
+	<%= t.footer %>
+	<%= t.body do |article| %>
+		<td><%= article.title %></td>
+		<td><%= article.text %></td>
+		<td><%= article.created_at %></td>
+		<td>
+			<%= link_to 'Show', article_path(article) %><br>
+			<%= link_to 'Edit', edit_article_path(article) %><br>
+			<%= link_to 'Destroy', article_path(article), method: :delete, data: { confirm: 'Are you sure?' } %>
+		</td>
+	<% end %>
+<% end %>
