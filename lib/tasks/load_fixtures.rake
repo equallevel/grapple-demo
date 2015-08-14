@@ -1,16 +1,17 @@
 desc 'Load the fixtures into the database'
 task :load_fixtures, [] => :environment do |t, args|
+	require 'csv'
 
 	# Load all the models
 	Dir[Rails.root.join("app", "models", "**", "*.rb")].each(&method(:require))
 	models = ActiveRecord::Base.subclasses.index_by(&:table_name)
 
 	Dir[Rails.root.join('db', 'fixtures', '*.csv')].each do |file|
-		puts file
+		#puts file
 		table_name = file.split('/').last.split('.').first
-		puts table_name
+		#puts table_name
 		model = models[table_name]
-		puts model
+		#puts model
 		header = nil
 		CSV.foreach(file) do |row|
 			if header.nil?
@@ -18,9 +19,9 @@ task :load_fixtures, [] => :environment do |t, args|
 				next
 			end
 
-			# TODO: Map the row using the header
-			# TODO: Import the row using the model
-			
+			atts = {}
+			header.each_with_index{|h,i| atts[h.to_sym] = row[i]}
+			model.create(atts)
 		end
 	end
 
