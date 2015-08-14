@@ -1,21 +1,14 @@
 <%
 	columns = [
-		{ width: 140 },
-		{ width: 100 },
-		{ width: 175 },
+		{ width: 140, label: "Name", sort: "name" },
+		{ width: 100, label: "Code", sort: 'code' },
+		{ width: 175, label: "Created At", sort: "created_at" },
 		{ width: 300 },
 	]
 %>
-<%= table_for(columns, @states, builder: Grapple::HtmlTableBuilder, class: 'table') do |t| %>
+<%= table_for(columns, @states, builder: Grapple::DataGridBuilder, class: 'table') do |t| %>
 	<%= t.colgroup %>
-	<%= t.header do %>
-		<tr>
-			<th>Name</th>
-			<th>Code</th>
-			<th>Created At</th>
-			<th></th>
-		</tr>
-	<% end %>
+	<%= t.column_headings  %>
 	<%= t.footer %>
 	<%= t.body do |state| %>
 		<td><%= state.name %></td>

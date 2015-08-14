@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 	resources :basic_html
 	resources :pagination
 	resources :sorting
+  resources :search
 	resources :ajax
   resources :states
   resources :zip_codes

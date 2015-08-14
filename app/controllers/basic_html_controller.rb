@@ -1,7 +1,11 @@
 class BasicHtmlController < ApplicationController
 
 	def index
-		@articles = Article.all
+		@states = State.all
+	end
+
+	def table
+
 	end
 
 end
