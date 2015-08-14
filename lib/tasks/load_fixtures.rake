@@ -12,8 +12,12 @@ task :load_fixtures, [] => :environment do |t, args|
 		puts table_name
 		model = models[table_name]
 		puts model
-		header = nil
 
+		# Clear out existing records
+		model.delete_all
+
+		# Load all the records from the csv file
+		header = nil
 		CSV.foreach(file) do |row|
 			if header.nil?
 				header = row
@@ -22,7 +26,7 @@ task :load_fixtures, [] => :environment do |t, args|
 
 			atts = {}
 			header.each_with_index{|h,i| atts[h.to_sym] = row[i]}
-			model.first_or_create(atts)
+			model.create(atts)
 		end
 	end
 

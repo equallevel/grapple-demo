@@ -21,3 +21,9 @@
 
 en:
   hello: "Hello world"
+  zip: "ZIP Code"
+  city: "City"
+  county: "County"
+  state: "State"
+  export: "Export"
+  

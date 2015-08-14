@@ -13,4 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require grapple
+//= require grapple-jquery
 //= require_tree .

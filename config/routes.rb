@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :states
 
-  resources :zip_codes
+	# Generic routes for table fragments
+	get ':controller/table', action: 'table'
 
   get 'home/index'
 
@@ -17,7 +17,9 @@ Rails.application.routes.draw do
 	resources :pagination
 	resources :sorting
 	resources :ajax
-  
+  resources :states
+  resources :zip_codes
+	
   root 'home#index', as: 'home'
 
   # Example of regular route:
