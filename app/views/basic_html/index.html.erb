@@ -6,7 +6,9 @@
 		{ width: 300 },
 	]
 %>
-<%= table_for(columns, @states, builder: Grapple::HtmlTableBuilder, class: 'table') do |t| %>
+
+<div class="grapple">
+<%= table_for(columns, @states, builder: Grapple::HtmlTableBuilder) do |t| %>
 	<%= t.colgroup %>
 	<%= t.header do %>
 		<tr>
@@ -28,3 +30,4 @@
 		</td>
 	<% end %>
 <% end %>
+</div>
