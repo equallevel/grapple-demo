@@ -8,7 +8,9 @@
 %>
 <%= table_for(columns, @states, builder: Grapple::DataGridBuilder, class: 'table') do |t| %>
 	<%= t.header do %>
-		<%= t.toolbar %>
+		<%= t.toolbar do %>
+			<%= t.search_form(form_options: {method: 'get'}) %>
+		<% end %>
 	<% end %>
 	<%= t.colgroup %>
 	<%= t.column_headings  %>
