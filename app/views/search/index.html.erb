@@ -1,29 +1,28 @@
 <%
 	columns = [
-		{ width: 140, label: "Name"},
-		{ width: 100, label: "Code"},
-		{ width: 175, label: "Created At"},
+		{ width: 140, label: "Name" },
+		{ width: 100, label: "Code" },
+		{ width: 175, label: "Created At" },
 		{ width: 300 },
 	]
 %>
 
 <div class="grapple">
 <%= table_for(columns, @states, builder: Grapple::DataGridBuilder) do |t| %>
+	<%= t.colgroup %>
 	<%= t.header do %>
 		<%= t.toolbar do %>
 			<%= t.search_form(form_options: {method: 'get'}) %>
 		<% end %>
+		<%= t.column_headings  %>
 	<% end %>
-	<%= t.colgroup %>
-	<%= t.column_headings  %>
-	<%= t.footer %>
 	<%= t.body do |state| %>
 		<td><%= state.name %></td>
 		<td><%= state.code %></td>
 		<td><%= state.created_at %></td>
 		<td>
-			<%= link_to 'Show', state_path(state) %><br>
-			<%= link_to 'Edit', edit_state_path(state) %><br>
+			<%= link_to 'Show', state_path(state) %> | 
+			<%= link_to 'Edit', edit_state_path(state) %> | 
 			<%= link_to 'Destroy', state_path(state), method: :delete, data: { confirm: 'Are you sure?' } %>
 		</td>
 	<% end %>
