@@ -6,16 +6,40 @@
 		{ width: 175, label: "County" },
 	]
 %>
-<div class="grapple">
-<%= table_for(columns, @zip_codes, builder: Grapple::DataGridBuilder) do |t| %>
-	<%= t.colgroup %>
-	<%= t.header %>
-	<%= t.footer %>
-	<%= t.body do |zip_code| %>
-		<td><%= zip_code.zip %></td>
-		<td><%= zip_code.city %></td>
-		<td><%= zip_code.state.name rescue "" %></td>
-		<td><%= zip_code.county %></td>
-	<% end %>
-<% end %>
+
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><a href="#demo" aria-controls="demo" role="tab" data-toggle="tab">Basic HTML Table</a></li>
+  <li role="presentation"><a href="#controller" aria-controls="controller" role="tab" data-toggle="tab">basic_html_controller.rb</a></li>
+  <li role="presentation"><a href="#view" aria-controls="view" role="tab" data-toggle="tab">index.html.erb</a></li>
+</ul>
+
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane active" id="demo">
+		<div class="grapple">
+			<%= table_for(columns, @zip_codes, builder: Grapple::DataGridBuilder) do |t| %>
+				<%= t.colgroup %>
+				<%= t.header %>
+				<%= t.footer %>
+				<%= t.body do |zip_code| %>
+					<td><%= zip_code.zip %></td>
+					<td><%= zip_code.city %></td>
+					<td><%= zip_code.state.name rescue "" %></td>
+					<td><%= zip_code.county %></td>
+				<% end %>
+			<% end %>
+		</div>
+	</div>
+  <div role="tabpanel" class="tab-pane" id="controller">
+  	<textarea id='controller_hidden' style='display:none'><%= code_view 'app/controllers/pagination_controller.rb' %></textarea>
+  	<div id="controller_codemirror" class="editor"></div>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="view">
+  	<textarea id='view_hidden' style='display:none'><%= code_view 'app/views/pagination/index.html.erb' %></textarea>
+  	<div id="view_codemirror" class="editor"></div>
+  </div>
 </div>
+
+<script type='text/javascript'>
+	initalizeCodeMirror('controller', 'ruby');
+	initalizeCodeMirror('view', 'htmlmixed')
+</script>

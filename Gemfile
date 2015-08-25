@@ -14,8 +14,13 @@ gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
+# for displaying source code of examples
+gem 'codemirror-rails'
+
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
-gem 'grapple', '>= 0.0.1'
+#gem 'grapple', '>= 0.0.1'
+gem 'grapple', :path => "#{File.expand_path(__FILE__)}/../../../grapple/trunk"
+
 gem 'will_paginate'

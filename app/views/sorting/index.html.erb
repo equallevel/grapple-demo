@@ -7,22 +7,44 @@
 	]
 %>
 
-<div class="grapple">
-<%= table_for(columns, @states, builder: Grapple::DataGridBuilder) do |t| %>
-	<%= t.colgroup %>
-	<%= t.header do %>
-		<%= t.column_headings  %>
-	<% end %>
-	<%= t.footer %>
-	<%= t.body do |state| %>
-		<td><%= state.name %></td>
-		<td><%= state.code %></td>
-		<td><%= state.created_at %></td>
-		<td>
-			<%= link_to 'Show', state_path(state) %> | 
-			<%= link_to 'Edit', edit_state_path(state) %> | 
-			<%= link_to 'Destroy', state_path(state), method: :delete, data: { confirm: 'Are you sure?' } %>
-		</td>
-	<% end %>
-<% end %>
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><a href="#demo" aria-controls="demo" role="tab" data-toggle="tab">Sorting Table</a></li>
+  <li role="presentation"><a href="#controller" aria-controls="controller" role="tab" data-toggle="tab">sorting_controller.rb</a></li>
+  <li role="presentation"><a href="#view" aria-controls="view" role="tab" data-toggle="tab">index.html.erb</a></li>
+</ul>
+
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane active" id="demo">
+  	<div class="grapple">
+			<%= table_for(columns, @states, builder: Grapple::DataGridBuilder) do |t| %>
+				<%= t.colgroup %>
+				<%= t.column_headings  %>
+				<%= t.footer %>
+				<%= t.body do |state| %>
+					<td><%= state.name %></td>
+					<td><%= state.code %></td>
+					<td><%= state.created_at %></td>
+					<td>
+						<%= link_to 'Show', state_path(state) %><br>
+						<%= link_to 'Edit', edit_state_path(state) %><br>
+						<%= link_to 'Destroy', state_path(state), method: :delete, data: { confirm: 'Are you sure?' } %>
+					</td>
+				<% end %>
+			<% end %>
+		</div>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="controller">
+  	<textarea id='controller_hidden' style='display:none'><%= code_view 'app/controllers/sorting_controller.rb' %></textarea>
+  	<div id="controller_codemirror" class="editor"></div>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="view">
+  	<textarea id='view_hidden' style='display:none'><%= code_view 'app/views/basic_html/index.html.erb' %></textarea>
+  	<div id="view_codemirror" class="editor"></div>
+  </div>
 </div>
+
+<script type='text/javascript'>
+	initalizeCodeMirror('controller', 'ruby');
+	initalizeCodeMirror('view', 'htmlmixed')
+</script>
+

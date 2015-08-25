@@ -1,9 +1,10 @@
 class SearchController < ApplicationController
 
 	def index
-		params[:query] ||= ""
-		query = "#{params[:query].downcase}%"
-		@states = State.where("name LIKE ? OR code LIKE ?", query, query)
+		query = "#{(params[:query] || "").downcase}%"
+		conds = ["LOWER(name) LIKE ? OR LOWER(code) LIKE ?", query, query]
+
+		@states = State.paginate(page: params[:page] || 1, per_page: 10).where(conds)
 	end
 
 end

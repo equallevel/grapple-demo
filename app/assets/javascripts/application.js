@@ -12,7 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require grapple
+//= require grapple-history
 //= require grapple-jquery
+//= require codemirror
+//= require codemirror/modes/ruby
+//= require codemirror/modes/xml
+//= require codemirror/modes/javascript
+//= require codemirror/modes/css
+//= require codemirror/modes/htmlmixed
 //= require_tree .

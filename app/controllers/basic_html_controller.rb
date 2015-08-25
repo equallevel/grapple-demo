@@ -4,8 +4,4 @@ class BasicHtmlController < ApplicationController
 		@states = State.all
 	end
 
-	def table
-
-	end
-
 end

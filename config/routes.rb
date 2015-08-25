@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 	resources :sorting
   resources :search
 	resources :ajax
+  resources :ajax_history
   resources :states
   resources :zip_codes
 	
