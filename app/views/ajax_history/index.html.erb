@@ -1,3 +1,33 @@
-<%= grapple_container(id: 'zip_codes_table', history: true) do %>
-	<%= render :partial => 'table' %>
-<% end %>
+
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><a href="#demo" aria-controls="demo" role="tab" data-toggle="tab">AJAX History Table</a></li>
+  <li role="presentation"><a href="#controller" aria-controls="controller" role="tab" data-toggle="tab">ajax_history_controller.rb</a></li>
+  <li role="presentation"><a href="#view" aria-controls="view" role="tab" data-toggle="tab">index.html.erb</a></li>
+  <li role="presentation"><a href="#view2" aria-controls="view2" role="tab" data-toggle="tab">_table.html.erb</a></li>
+</ul>
+
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane active" id="demo">
+	  <%= grapple_container(id: 'zip_codes_table', history: true) do %>
+			<%= render :partial => 'table' %>
+		<% end %>
+	</div>
+  <div role="tabpanel" class="tab-pane" id="controller">
+  	<textarea id='controller_hidden' style='display:none'><%= code_view 'app/controllers/ajax_history_controller.rb' %></textarea>
+  	<div id="controller_codemirror" class="editor"></div>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="view">
+  	<textarea id='view_hidden' style='display:none'><%= code_view 'app/views/ajax_history/index.html.erb' %></textarea>
+  	<div id="view_codemirror" class="editor"></div>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="view2">
+  	<textarea id='view2_hidden' style='display:none'><%= code_view 'app/views/ajax_history/_table.html.erb' %></textarea>
+  	<div id="view2_codemirror" class="editor"></div>
+  </div>
+</div>
+
+<script type='text/javascript'>
+	initalizeCodeMirror('controller', 'ruby');
+	initalizeCodeMirror('view', 'htmlmixed')
+	initalizeCodeMirror('view2', 'htmlmixed')
+</script>
