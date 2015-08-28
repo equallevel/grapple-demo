@@ -2,7 +2,7 @@
 	columns = [
 		{ width: 140 },
 		{ width: 100 },
-		{ width: 175 },
+		{ width: 200 },
 		{ width: 300 },
 	]
 %>
@@ -27,8 +27,8 @@
 					<td><%= state.code %></td>
 					<td><%= state.created_at %></td>
 					<td>
-						<%= link_to 'Show', state_path(state) %><br>
-						<%= link_to 'Edit', edit_state_path(state) %><br>
+						<%= link_to 'Show', state_path(state) %> | 
+						<%= link_to 'Edit', edit_state_path(state) %> | 
 						<%= link_to 'Destroy', state_path(state), method: :delete, data: { confirm: 'Are you sure?' } %>
 					</td>
 				<% end %>
