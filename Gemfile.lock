@@ -40,7 +40,7 @@ GEM
     coffee-script-source (1.9.1.1)
     erubis (2.7.0)
     execjs (2.6.0)
-    grapple (0.0.1)
+    grapple (0.0.2)
       actionpack (>= 3.2.13)
       activesupport (>= 3.2.13)
     i18n (0.7.0)
@@ -100,7 +100,7 @@ PLATFORMS
 
 DEPENDENCIES
   codemirror-rails
-  grapple (>= 0.0.1)
+  grapple (>= 0.0.2)
   jquery-rails
   rails (= 4.1.0)
   spring

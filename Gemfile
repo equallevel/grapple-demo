@@ -20,7 +20,7 @@ gem 'codemirror-rails'
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
-gem 'grapple', '>= 0.0.1'
+gem 'grapple', '>= 0.0.2'
 #gem 'grapple', :path => "#{File.expand_path(__FILE__)}/../vendor/gems/grapple"
 
 gem 'will_paginate'
