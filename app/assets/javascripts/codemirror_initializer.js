@@ -9,11 +9,12 @@ initalizeCodeMirror = function(id, mode){
 		mode: mode,
 		readOnly: true,
 		lineNumbers: true,
-		viewportMargin: Infinity
+		viewportMargin: Infinity,
+		tabSize: 2
 	});
 
-	//need to refresh code mirror on tab change
+	// need to refresh code mirror on tab change
 	$('a[href="#'+id+'"]').on('shown.bs.tab', function (e) {
-  	codeMirror.refresh();
+		codeMirror.refresh();
 	});
 }

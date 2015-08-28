@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Grapple Demos</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	<title>Grapple Demos</title>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 	<%= stylesheet_link_tag '//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'codemirror_initializer', 'data-turbolinks-track' => true %>
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'codemirror_initializer', 'data-turbolinks-track' => true %>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 	<%= yield(:page_head) %>
-  <%= csrf_meta_tags %>
+	<%= csrf_meta_tags %>
 </head>
 <body>
 	<div class="header">
 		<%= link_to "Grapple Demos", home_path %>
 	</div>
-  <div class="container">
-    <%= yield %>
-  </div>
+	<div class="container-fluid">
+		<%= yield %>
+	</div>
 </body>
 </html>

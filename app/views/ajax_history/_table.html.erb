@@ -26,7 +26,7 @@
 	<%= t.footer %>
 	<%= t.body do |item| %>
 		<td class="actions">
-			
+			<%= link_to '', edit_zip_code_path(item), class: "glyphicon glyphicon-pencil" %>
 		</td>
 		<td><%= link_to item.zip, item %></td>
 		<td><%= item.city %></td>

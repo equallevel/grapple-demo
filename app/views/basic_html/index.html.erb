@@ -3,18 +3,17 @@
 		{ width: 140 },
 		{ width: 100 },
 		{ width: 200 },
-		{ width: 300 },
+		{ width: 160 },
 	]
 %>
 
-
 <div class="row">
 	<div class="col-md-6">
-		<div class='grapple'>
+		<div class="grapple">
 			<%= table_for(columns, @states, builder: Grapple::HtmlTableBuilder) do |t| %>
 				<%= t.colgroup %>
 				<%= t.header do %>
-					<tr>
+					<tr class="column-headers">
 						<th>Name</th>
 						<th>Code</th>
 						<th>Created At</th>

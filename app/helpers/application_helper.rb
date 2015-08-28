@@ -27,14 +27,13 @@ module ApplicationHelper
 			active = (cd[:active] ? "active" : "")
 			html += "<div role='tabpanel' class='tab-pane #{active}' id='#{cd[:name]}'>"
 			html += "<textarea id='#{cd[:name]}_hidden' style='display:none'>#{cd[:source]}</textarea>"
-		  html += "<div id='#{cd[:name]}_codemirror' class='editor'></div>"
-		  html += "<script type='text/javascript'>$( document ).ready(function() {initalizeCodeMirror('#{cd[:name]}', '#{cd[:mode]}');})</script>"
-		  html += "</div>"
+			html += "<div id='#{cd[:name]}_codemirror' class='editor'></div>"
+			html += "<script type='text/javascript'>"
+			html += "$( document ).ready(function() { initalizeCodeMirror('#{cd[:name]}', '#{cd[:mode]}'); })"
+			html += "</script>"
+			html += "</div>"
 		end
 		html += "</div>"
-
-		puts "\n\n\n!!!"
-		puts html
 
 		return html.html_safe
 	end
