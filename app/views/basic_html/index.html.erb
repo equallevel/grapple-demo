@@ -11,6 +11,7 @@
 	<div class="col-md-6">
 		<div class="grapple">
 			<%= table_for(columns, @states, builder: Grapple::HtmlTableBuilder) do |t| %>
+				<%= t.caption "States" %>
 				<%= t.colgroup %>
 				<%= t.header do %>
 					<tr class="column-headers">

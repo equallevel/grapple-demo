@@ -1,7 +1,6 @@
 <%
 	columns = [
 		{ },
-		# When label is a symbol, it is automatically translated
 		{ label: :zip, sort: 'zip', width: 120 },
 		{ label: :city, sort: 'city', width: 200 },
 		{ label: :county, sort: 'county', width: 200 },	
@@ -12,12 +11,21 @@
 		{ label: :export, url: '#', "data-toggle" => 'modal', "data-target" => "#export_dialog" }
 	]
 %>
-<%= table_for(columns, @zip_codes, html: { class: 'my-custom-class-name' }, builder: MyAjaxTableBuilder) do |t| %>
+<pre>
+<%= request.xhr?.inspect %>
+</pre>
+<%= table_for(columns, @zip_codes, id: 'zip_codes_table', 
+			history: true, 
+			namespace: 'zip_codes', 
+			url: url_for(action: 'zip_codes_table'), 
+			builder: MyHistoryTableBuilder) do |t| %>
 	<%= t.colgroup %>
 	<%= t.header do %>
 		<%= t.infobar %>
 		<%= t.toolbar do %>
-			<%= t.search_form %>
+			<%= t.search_form do %>
+
+			<% end %>
 			<%= t.actions actions %>
 		<% end %>
 		<%= t.column_headings %>
@@ -25,7 +33,7 @@
 	<%= t.footer %>
 	<%= t.body do |item| %>
 		<td class="actions">
-			
+			<%= link_to '', edit_zip_code_path(item), class: "glyphicon glyphicon-pencil" %>
 		</td>
 		<td><%= link_to item.zip, item %></td>
 		<td><%= item.city %></td>

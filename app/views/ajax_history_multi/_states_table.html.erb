@@ -1,0 +1,35 @@
+<%
+	columns = [
+		{ },
+		{ label: :zip, sort: 'name', width: 120 },
+		{ label: :city, sort: 'code', width: 200 }
+	]
+
+	actions = [
+	]
+%>
+<%= table_for(columns, @states, id: 'states_table', 
+			history: true, 
+			namespace: 'states',
+			url: url_for(action: 'states_table'), 
+			builder: MyHistoryTableBuilder) do |t| %>
+	<%= t.colgroup %>
+	<%= t.header do %>
+		<%= t.infobar %>
+		<%= t.toolbar do %>
+			<%= t.search_form do %>
+				
+			<% end %>
+			<%= t.actions actions %>
+		<% end %>
+		<%= t.column_headings %>
+	<% end %>
+	<%= t.footer %>
+	<%= t.body do |item| %>
+		<td class="actions">
+			<%= link_to '', edit_state_path(item), class: "glyphicon glyphicon-pencil" %>
+		</td>
+		<td><%= link_to item.name, item %></td>
+		<td><%= item.code %></td>
+	<% end %>
+<% end %>

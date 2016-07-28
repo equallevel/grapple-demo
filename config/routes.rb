@@ -19,7 +19,10 @@ Rails.application.routes.draw do
   resources :search
 	resources :ajax
   resources :ajax_history
-  resources :states
+  get 'ajax_history_multi/states_table', controller: 'ajax_history_multi', action: 'states_table'
+	get 'ajax_history_multi/zip_codes_table', controller: 'ajax_history_multi', action: 'zip_codes_table'
+	resources :ajax_history_multi
+	resources :states
   resources :zip_codes
 	
   root 'home#index', as: 'home'
