@@ -1,0 +1,15 @@
+{
+	"name": "grapple-demo",
+	"version": "2.0.0",
+	"private": true,
+	"description": "A demo application for the grapple gem",
+	"dependencies": {},
+	"scripts": {
+		"preinstall": "bin/bundle install",
+		"build": "docker build -t grapple-demo-img .",
+		"inspect": "docker exec -it grapple-demo /bin/bash",
+		"prestart": "docker stop grapple-demo; docker container rm grapple-demo; rm app/tmp/pids/server.pid || true",
+		"start": "docker run --privileged -v $(pwd):/grapple-demo -p 5000:5000/tcp --name grapple-demo -it grapple-demo-img",
+		"serve": "npm run build && npm start"
+	}
+}

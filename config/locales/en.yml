@@ -27,4 +27,7 @@ en:
   state: "State"
   export: "Export"
   filter: "Filter"
+  title: "Title"
+  contents: "Contents"
+  created_at: "Created At"
   

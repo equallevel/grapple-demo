@@ -1,8 +1,9 @@
 <div class="row">
 	<div class="col-md-6">
-		<%= grapple_container(id: 'zip_codes_table', history: true,	namespace: 'zip_codes', builder: MyHistoryTableBuilder) do %>
+		<!-- grapple_container calls an instance method on the builder class, throwing a NoMethodError -->
+		<%#= grapple_container(id: 'zip_codes_table', history: true,	namespace: 'zip_codes', builder: MyHistoryTableBuilder) do %>
 			<%= render partial: 'table' %>
-		<% end %>
+		<%# end %>
 	</div>
 	<div class="col-md-6">
 		<%= code_tabs(['app/controllers/ajax_history_controller.rb', 'app/views/ajax_history/index.html.erb', 'app/views/ajax_history/_table.html.erb']) %>
