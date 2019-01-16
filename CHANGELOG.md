@@ -9,12 +9,13 @@
 * Docker build/run scripts - see `README.md` for details (`package.json`)
 * Debug support for VSCode - see `.vscode/launch.json` for details (`.vscode/launch.json, Gemfile`)
 * Assets initializer (`config/initializers/assets.rb`)
+* Dockerfile (`Dockerfile`)
 
 ### Changed
 
 * Migrated from Rails 4.1.0 to 5.2.2
 * All models now inherit from `ApplicationRecord`
-* Updated dependencies 
+* Updated dependencies
 
 ### Fixed
 
