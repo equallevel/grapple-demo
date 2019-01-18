@@ -2,6 +2,7 @@
   <div class="col-md-6">
 		<!-- grapple_container calls an instance method on the builder class, throwing a NoMethodError -->
 		<%#= grapple_container(id: 'zip_codes_table', builder: MyAjaxTableBuilder) do %>
+			<%= render partial: 'search' %>
 			<%= render partial: 'table' %>
 		<%# end %>
 	</div>

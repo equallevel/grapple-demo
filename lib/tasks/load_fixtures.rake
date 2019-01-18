@@ -28,6 +28,8 @@ task :load_fixtures, [] => :environment do |t, args|
 
 			atts = {}
 			header.each_with_index{|h,i| atts[h.to_sym] = row[i]}
+			_m = model.create(atts)
+			puts _m.inspect
 		end
 	end
 

@@ -1,6 +1,19 @@
 # Change Log
 
-## v2.0.0 - 19-01-16
+## v2.1.1 - 2019-01-18 :rocket:
+
+### Added
+
+* Database initialization bash script (`bin/init`)
+* Database initialization instructions (`README.md`)
+
+### Changed
+
+### Fixed
+
+* Accidental deletion of `model.create` in the `load_fixtures` rake task (`lib/tasks/load_fixtures.rake`)
+
+## v2.0.0 - 2019-01-16 :rocket:
 
 ### Added
 

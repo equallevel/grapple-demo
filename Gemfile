@@ -25,6 +25,8 @@ gem 'grapple', '>= 0.1.5'
 
 gem 'will_paginate'
 
+gem 'ransack'
+
 group :development, :test do
 	# For debugging in VSCode
 	gem 'ruby-debug-ide'
