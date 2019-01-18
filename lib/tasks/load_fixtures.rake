@@ -4,8 +4,9 @@ task :load_fixtures, [] => :environment do |t, args|
 
 	# Load all the models
 	Dir[Rails.root.join("app", "models", "**", "*.rb")].each(&method(:require))
-	models = ActiveRecord::Base.subclasses.index_by(&:table_name)
-
+	# models = ActiveRecord::Base.subclasses.index_by(&:table_name)
+	models = ::ApplicationRecord.subclasses.index_by(&:table_name)
+	puts models
 	Dir[Rails.root.join('db', 'fixtures', '*.csv')].each do |file|
 		puts file
 		table_name = file.split('/').last.split('.').first
@@ -21,12 +22,12 @@ task :load_fixtures, [] => :environment do |t, args|
 		CSV.foreach(file) do |row|
 			if header.nil?
 				header = row
+				puts "Seeding #{file}..."
 				next
 			end
 
 			atts = {}
 			header.each_with_index{|h,i| atts[h.to_sym] = row[i]}
-			model.create(atts)
 		end
 	end
 
