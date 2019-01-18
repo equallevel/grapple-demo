@@ -12,11 +12,6 @@ cd grapple-demo.git
 bundle install
 ```
 
-
-```sh
-npm run db:init # Go ahead and grab a cup of coffee :)
-```
-
 If you want to run the app in a Docker container, use the following npm script.
 It takes care of all the prerequisite setup for you.
 *NOTE: You must have docker and npm installed*.
