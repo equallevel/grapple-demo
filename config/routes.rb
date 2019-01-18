@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 	resources :ajax_history_multi
 	resources :states
   resources :zip_codes
+  resources :ransack
 	
   root 'home#index', as: 'home'
 
