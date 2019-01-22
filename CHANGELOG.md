@@ -1,6 +1,8 @@
 # Change Log
 
-## v2.0.0 - 19-01-16
+## v2.0.1 - January 22nd, 2019
+
+## v2.0.0 - January 16th, 2019
 
 ### Added
 
