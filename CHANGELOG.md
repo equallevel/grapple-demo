@@ -1,8 +1,22 @@
 # Change Log
 
-## v2.0.1 - January 22nd, 2019
+## :rocket: v2.0.1 - January 22nd, 2019
 
-## v2.0.0 - January 16th, 2019
+### Added
+
+* Added sections to `README.md` to reflect the version changes
+
+### Changed
+
+* Launch scripts were migrated from npm to bash in `bin/dev`
+
+### Fixed
+
+* Removed commented out grapple containers
+* Removed grapple/ransack code and moved it to the `ransack` branch
+* `.vscode` directory is now ignored and no longer in the repo
+
+## :rocket: v2.0.0 - January 16th, 2019
 
 ### Added
 
