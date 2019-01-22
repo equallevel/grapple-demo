@@ -12,13 +12,18 @@
 		{ label: :export, url: '#', "data-toggle" => 'modal', "data-target" => "#export_dialog" }
 	]
 %>
+<style>
+ul.search-form-opts > li{
+	display: inline
+}
+</style>
 <%= table_for(columns, @zip_codes, html: { class: 'my-custom-class-name' }, builder: MyAjaxTableBuilder) do |t| %>
 	<%= t.colgroup %>
 	<%= t.header do %>
 		<%= t.infobar %>
 		<%= t.toolbar do %>
-			<%= t.search_form %>
-			<%= t.actions actions %>
+			<%= t.ransack_form ransack: @q do%>
+			<% end %>
 		<% end %>
 		<%= t.column_headings %>
 	<% end %>
@@ -33,3 +38,29 @@
 		<td><%= item.state.name %></td>
 	<% end %>
 <% end %>
+
+
+
+<%#= search_form_for @q do |f| %>
+				<!--ul class="search-form-opts">
+  				<%# Search if the zip field contains...%>
+				<li>
+  				<%#= f.label :zip_cont %>
+  				<%#= f.search_field :zip_cont %>
+				</li>
+				<li>
+  				<%# Search if an associated state.name starts with...%>
+  				<%#= f.label :state_name_start %>
+  				<%#= f.search_field :state_name_start %>
+				</li>
+				<li>
+  				<%# Attributes may be chained. Search multiple attributes for one value...%>
+  				<%#= f.label :state_name_or_zip_or_city_cont %>
+  				<%#= f.search_field :state_name_or_zip_or_city_cont %>
+				</li>
+				<li>
+  				<%#= f.submit %>
+				</li>
+				</ul-->
+				<%# end %>
+			<%#= t.actions actions %>

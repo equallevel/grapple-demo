@@ -1,12 +1,30 @@
 <div class="row">
+	<style>
+		h1.demo-title {
+			text-align: center;
+		}
+	</style>
+	<div class="col-md-12">
+		<h1 class="demo-title">Table One: Default Search Bar</h1>
+		<hr />
+	</div>
   <div class="col-md-6">
 		<!-- grapple_container calls an instance method on the builder class, throwing a NoMethodError -->
 		<%#= grapple_container(id: 'zip_codes_table', builder: MyAjaxTableBuilder) do %>
-			<%= render partial: 'search' %>
-			<%= render partial: 'table' %>
+			<%= render partial: 'table_one' %>
 		<%# end %>
 	</div>
   <div class="col-md-6">
-    <%= code_tabs(['app/controllers/ransack_controller.rb', 'app/views/ransack/index.html.erb', 'app/views/ransack/_table.html.erb']) %>
+    <%= code_tabs(['app/views/ransack/_table_one.html.erb', 'app/controllers/ransack_controller.rb', 'app/views/ransack/index.html.erb' ]) %>
   </div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<h1 class="demo-title">Table Two: Custom Search Bar</h1>
+	</div>
+	<div class="col-md-6">
+		<%= render partial: 'table_two' %>
+	</div>
+	<div class="col-md-6">
+		<%= code_tabs(['app/views/ransack/_table_two.html.erb', 'app/controllers/ransack_controller.rb', 'app/views/ransack/index.html.erb']) %>
 </div>

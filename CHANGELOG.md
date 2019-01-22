@@ -6,12 +6,21 @@
 
 * Database initialization bash script (`bin/init`)
 * Database initialization instructions (`README.md`)
+* Dropdown links in navbar for easier navigation
+* [Ransack](https://github.com/activerecord-hackery/Ransack) search gem demo (views, controller, etc.)
+* `dev` npm script (`package.json`)
 
 ### Changed
+
+* `grapple` gem comes from [Don's Fork](https://github.com/DonIsaac/grapple) for development purposes (*NOTE: this should be changed if someone else takes over maintenance*)
+* Improved nav bar
+* Modified `README.md` to reflect changes
 
 ### Fixed
 
 * Accidental deletion of `model.create` in the `load_fixtures` rake task (`lib/tasks/load_fixtures.rake`)
+
+----
 
 ## v2.0.0 - 2019-01-16 :rocket:
 

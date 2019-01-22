@@ -39,3 +39,4 @@ bin/rails server -p 5000 # Start the server
 * `npm run build` builds the Docker image. Run this if you change the Dockerfile or add a new gem.
 * `npm start` starts/restarts the container from the image. An image **must** exist before this command can be run.
 * `npm run serve` initializes the database, builds an image, and starts the container. *Recommended for first time Docker setup.*
+* `npm run dev` starts a local server for development
