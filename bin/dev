@@ -7,7 +7,7 @@ PID="tmp/pids/server.pid"
 bin_loc="$( dirname "$(realpath ${BASH_SOURCE[0]})" )"
 cd $bin_loc
 cd ..
-set -x
+
 case "$1" in
 	install)
 		echo "dev: Installing dependencies..."
@@ -108,4 +108,3 @@ case "$1" in
 		echo "dev: '$1' is not a valid command. see 'dev --help'"
 	;;
 esac
-set +x
