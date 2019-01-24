@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker build -t grapple-demo-img -f Dockerfile.prod .
