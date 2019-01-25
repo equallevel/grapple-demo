@@ -12,9 +12,9 @@ cd grapple-demo.git
 bin/dev install
 ```
 
-If you want to run the app in a Docker container, use the following npm script.
+If you want to run the app in a Docker container, use the following bash script.
 It takes care of all the prerequisite setup for you.
-*NOTE: You must have docker and npm installed*.
+*NOTE: You must have docker installed*.
 
 ```sh
 bin/dev serve # Initializes the database, builds the Docker image and launches a new container

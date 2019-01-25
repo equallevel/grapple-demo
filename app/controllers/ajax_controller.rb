@@ -4,14 +4,10 @@ class AjaxController < ApplicationController
 
 	def index
 		@zip_codes = search_results
-		puts "\n\nINFO: @zip_codes RESULTS:"
-		puts @zip_codes.class
 	end
 
 	def table
 		@zip_codes = search_results
-		logger.debug "\n\nINFO: @zip_codes RESULTS:"
-		logger.debug @zip_codes.class
 		render partial: 'table'
 	end
 

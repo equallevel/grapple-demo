@@ -1,10 +1,7 @@
 <div class="row">
   <div class="col-md-6">
-		<!-- grapple_container calls an instance method on the builder class, throwing a NoMethodError -->
-		<%#= grapple_container(id: 'zip_codes_table', builder: MyAjaxTableBuilder) do %>
-			<%= render partial: 'table' %>
-		<%# end %>
-	</div>
+    <%= render partial: 'table' %>
+  </div>
   <div class="col-md-6">
     <%= code_tabs(['app/controllers/ajax_controller.rb', 'app/views/ajax/index.html.erb', 'app/views/ajax/_table.html.erb']) %>
   </div>
