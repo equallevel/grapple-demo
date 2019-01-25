@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.0'
+gem 'rails', '5.2.2'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Uglifier as compressor for JavaScript assets
@@ -20,7 +20,15 @@ gem 'codemirror-rails'
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
-gem 'grapple', '>= 0.1.5'
+# NOTE: Remove the github src before deployment!
+gem 'grapple'#, path: '../grapple'
 #gem 'grapple', :path => "#{File.expand_path(__FILE__)}/../vendor/gems/grapple"
 
 gem 'will_paginate'
+gem 'i18n'
+
+group :development, :test do
+	# For debugging in VSCode
+	gem 'ruby-debug-ide'
+	gem 'debase'
+end
