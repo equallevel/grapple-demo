@@ -1,0 +1,156 @@
+#!/usr/bin/env bash
+set -u
+set -e
+
+CONTAINER="grapple-demo"
+IMAGE="grapple-demo-img"
+PID="tmp/pids/server.pid"
+
+bin_loc="$( dirname "$(realpath ${BASH_SOURCE[0]})" )"
+cd $bin_loc
+cd ..
+
+## start(force: boolean) => exit_code: int
+#
+# Starts the docker container
+#   * force: boolean - true to re-create the container, false otherwise
+#
+# returns - the exit code of docker start or docker run
+function start() {
+	force=$1
+	if [ "$force" = true ] ; then
+			echo "dev: Rebuilding container..."
+			docker stop $CONTAINER
+			docker container rm grapple-demo;
+
+			if [ -f $PID ] ; then rm -f $PID ; fi
+
+			echo "dev: Creating and starting container..."
+	fi
+
+	if [ "$(docker ps -a | grep $CONTAINER)" == "" ]; then
+		echo "dev: Creating container..."
+		docker run --privileged -v $(pwd):/$CONTAINER -p 5000:5000/tcp --name $CONTAINER -it $IMAGE
+		# docker run --privileged -v $(pwd):/grapple-demo -p 5000:5000/tcp --name grapple-demo -it grapple-demo-img
+		# docker create --privileged -v $(pwd):/$CONTAINER -p 5000:5000/tcp --name $CONTAINER -it $IMAGE
+	else
+		echo "dev: Starting container..."
+		docker start $CONTAINER
+	fi
+	return $?
+}
+
+## stop(force: boolean) => exit_code: int
+#
+# Stops the docker container
+#   * force: boolean - if true, the container will also be removed
+#
+# returns - the exit code of docker stop or docker container rm
+function stop(force) {
+	force=$1
+	if [ "$force" = true ] ; then
+		echo "dev: Stopping and removing container..."
+		docker stop $CONTAINER
+		docker container rm grapple-demo;
+
+		if [ -f $PID ] ; then rm -f $PID ; fi
+	else
+		echo "dev: Stopping container..."
+		docker stop $CONTAINER
+	fi
+	echo "dev: Container stopped"
+	return $?
+}
+
+case "$1" in
+	"") # bin/dev defaults to starting the container
+		start false
+		;;
+
+	-f|--force) # bin/dev -f, checks for force flag
+		start true
+		;;
+
+	install)
+		echo "dev: Installing dependencies..."
+		$bin_loc/bundle install
+		;;
+
+	db:init|init)
+		echo "dev: Migrating database..."
+		$bin_loc/rails db:migrate
+		rake load_fixtures
+		;;
+
+	b|build)
+		echo "dev: Building Docker image..."
+		docker build -t $IMAGE -f Dockerfile.
+		;;
+
+	inspect)
+		docker exec -it $CONTAINER /bin/bash
+		;;
+
+	s|start)
+		if [ ! -z "$2" ] && [ "$2" == "-f" ] || [ "$2" == "--force" ]; then
+			force=true
+		else
+			force=false
+		fi
+		start $force
+		;;
+	
+	q|quit|stop)
+		if [ ! -z "$2" ] && [ "$2" == "-f" ] || [ "$2" == "--force" ]; then
+			force=true
+		else
+			force=false
+		fi
+		stop $force
+		;;
+
+	dev|local|loc)
+		if [ "$2" == "-u" || "$2" == "--update" ]; then
+			echo "dev: updating grapple..."
+			$bin_loc/bundle update grapple
+		fi
+		echo "re-"
+		echo "dev: Starting a local development server..."
+		$bin_loc/bundle update grapple && $bin_loc/rails server -p 5000
+		;;
+
+	serve)
+		echo "dev: Running first time installation (this is going to take a while)..."
+		$bin_loc/rails db:migrate
+		rake load_fixtures
+		docker build -t $IMAGE -f Dockerfile.
+		echo "dev: Successfully built the database and Docker image."
+		echo "dev: You will not need to do this again unless you make changes to the Dockerfile or dependencies. Use the 'dev start' command to start the container from now on."
+		docker run --privileged -v $(pwd):/$CONTAINER -p 5000:5000/tcp --name $CONTAINER -it grapple-demo-img
+		;;
+
+	-h|--help)
+		echo "Usage: dev [cmd] [options]"
+		echo ""
+		echo "Available commands:"
+		echo "  install            Install project dependencies"
+		echo "  db:init|init       Initialize the database. Creates the requisite tables in the database and seeds it"
+		echo "  build|b            Builds the Docker image"
+		echo "  inspect            Accesses the container's bash terminal"
+		echo "  dev|local|loc      Start a local development server"
+		echo "     options:"
+		echo "     -u, --update    Updates grapple before launch"
+		echo "  start|s            Starts the container from an existing image"
+		echo "     options:"
+		echo "     -f, --force     Forcefully stops/removes the container and re-creates it before launch"
+		echo "  stop|quit|q        Stops the container"
+		echo "     options:"
+		echo "     -f, --force     Forcefully stops/removes the container"
+		echo "  serve              Builds the Docker image, initializes the database, and starts the container"
+		echo "  -h, --help         Display this message"
+		;;
+
+	*)
+		echo "dev: '$1' is not a valid command. see 'dev --help'"
+	;;
+esac
