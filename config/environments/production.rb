@@ -40,6 +40,11 @@ Rails.application.configure do
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
 
+  # Support base url's
+  if ENV['RAILS_RELATIVE_URL_ROOT'].present?
+    config.action_controller.relative_url_root = ENV['RAILS_RELATIVE_URL_ROOT']
+  end
+
   # Set to :debug to see everything in the log.
   config.log_level = :info
 
