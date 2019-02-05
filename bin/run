@@ -5,7 +5,7 @@
 # Catch SIGTERM signals which tells us the container is being shut down
 # Notify the proxy server that an instance is coming down
 # Tell puma to shutdown and exit the shell script
-trap 'echo "----Shutting Down----"; curl "$SHUTDOWN_URL"; sleep 5; pkill -F /pint-admin/tmp/pids/puma.pid; exit 1;' TERM
+trap 'echo "----Shutting Down----"; curl "$SHUTDOWN_URL"; sleep 5; pkill -F /grapple-demo/tmp/pids/puma.pid; exit 1;' TERM
 
  # Start the HTTP server
 echo "----Starting Rails/Puma Server----"

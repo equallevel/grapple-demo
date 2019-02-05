@@ -27,7 +27,7 @@ COPY . /grapple-demo
 RUN RAILS_ENV=production RAILS_RELATIVE_URL_ROOT=/grapple/ bundle exec rake assets:precompile
 
 # Remove folders not needed in resulting image
-RUN rm -rf node_modules test /pint-admin/tmp
+RUN rm -rf node_modules test /grapple-demo/tmp
 
 ENTRYPOINT ["bin/start"]
 CMD ["bin/run"]
