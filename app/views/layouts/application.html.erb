@@ -27,7 +27,14 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse navbar-right">
           <ul class="nav navbar-nav">
-            <li><a href="#">HTML Table</a></li>
+            <li class="dropdown">
+              <a href="#data-grid" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ajax <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "AJAX", ajax_index_path %></li>
+                <li><%= link_to "AJAX w/History", ajax_history_index_path %></li>
+              </ul>
+            </li>
+            <!--/ajax -->
             <li class="dropdown">
               <a href="#data-grid" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Data Grid <span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -37,15 +44,7 @@
               </ul>
             </li>
             <!--/data-grid -->
-            <li class="dropdown">
-              <a href="#data-grid" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ajax <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><%= link_to "AJAX", ajax_index_path %></li>
-                <li><%= link_to "AJAX w/History", ajax_history_index_path %></li>
-              </ul>
-            </li>
-            <!--/ajax -->
-            <li><%= link_to 'Everything', controller: 'articles' %></li>
+            <li><%= link_to "HTML Table", basic_html_index_path %></li>
           </ul>
         </div>
         <!--/.nav-collapse -->

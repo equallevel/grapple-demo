@@ -1,19 +1,28 @@
-<h2>HtmlTableBuilder</h2>
-<ul>
-	<li><%= link_to "Basic HTML Table", basic_html_index_path %></li>
-</ul>
-<h2>DataGridBuilder</h2>
-<ul>
-	<li><%= link_to "Sorting", sorting_index_path %></li>
-	<li><%= link_to "Searching", search_index_path %></li>
-	<li><%= link_to "Pagination", pagination_index_path %></li>
-</ul>
-<h2>AjaxDataGridBuilder</h2>
-<ul>
-	<li><%= link_to "AJAX", ajax_index_path %></li>
-	<li><%= link_to "AJAX w/History", ajax_history_index_path %></li>
-</ul>
-
-
-
-<%= link_to 'Everything', controller: 'articles' %>
+<div class="container">
+  <div class="row text-center">
+	<h1 class="display-4">Grapple Demos</h1>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <h2>AjaxDataGridBuilder</h2>
+      <ul class="list-group">
+        <li class="list-group-item"><%= link_to "AJAX", ajax_index_path %></li>
+        <li class="list-group-item"><%= link_to "AJAX w/History", ajax_history_index_path %></li>
+      </ul>
+    </div>
+    <div class="col-md-4">
+      <h2>DataGridBuilder</h2>
+      <ul class="list-group">
+        <li class="list-group-item"><%= link_to "Sorting", sorting_index_path %></li>
+        <li class="list-group-item"><%= link_to "Searching", search_index_path %></li>
+        <li class="list-group-item"><%= link_to "Pagination", pagination_index_path %></li>
+      </ul>
+    </div>
+	<div class="col-md-4">
+      <h2>HtmlTableBuilder</h2>
+      <ul class="list-group">
+        <li class="list-group-item"><%= link_to "Basic HTML Table", basic_html_index_path %></li>
+      </ul>
+    </div>
+  </div>
+</div>
