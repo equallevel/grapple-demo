@@ -11,7 +11,7 @@
 		{ label: :export, url: '#', "data-toggle" => 'modal', "data-target" => "#export_dialog" }
 	]
 %>
-<%= table_for(columns, @zip_codes) do |t| %>
+<%= table_for(columns, @zip_codes, builder: MyAjaxTableBuilder) do |t| %>
 	<%= t.colgroup %>
 	<%= t.header do %>
 		<%= t.infobar %>
