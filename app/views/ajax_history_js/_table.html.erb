@@ -1,0 +1,36 @@
+<%
+	columns = [
+		{ },
+		{ label: :zip, sort: 'zip', width: 120 },
+		{ label: :city, sort: 'city', width: 200 },
+		{ label: :county, sort: 'county', width: 200 },	
+		{ label: :state, sort: 'states.name', width: 150 }
+	]
+
+	actions = [
+		{ label: :export, url: '#', "data-toggle" => 'modal', "data-target" => "#export_dialog" }
+	]
+%>
+<%= table_for(columns, @zip_codes, builder: MyHistoryTableBuilder) do |t| %>
+	<%= t.colgroup %>
+	<%= t.header do %>
+		<%= t.infobar %>
+		<%= t.toolbar do %>
+			<%= t.search_form do %>
+
+			<% end %>
+			<%= t.actions actions %>
+		<% end %>
+		<%= t.column_headings %>
+	<% end %>
+	<%= t.footer %>
+	<%= t.body do |item| %>
+		<td class="actions">
+			<%= link_to '', edit_zip_code_path(item), class: "glyphicon glyphicon-pencil" %>
+		</td>
+		<td><%= link_to item.zip, item %></td>
+		<td><%= item.city %></td>
+		<td><%= item.county %></td>
+		<td><%= item.state.name %></td>
+	<% end %>
+<% end %>

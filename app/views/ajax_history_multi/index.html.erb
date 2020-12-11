@@ -4,6 +4,11 @@
 		<%= render partial: 'states_table' %>
 	</div>
 	<div class="col-md-6">
-		<%= code_tabs(['app/controllers/ajax_history_controller.rb', 'app/views/ajax_history/index.html.erb', 'app/views/ajax_history/_table.html.erb']) %>
+		<%= code_tabs([
+			'app/controllers/ajax_history_multi_controller.rb', 
+			'app/views/ajax_history_multi/index.html.erb', 
+			'app/views/ajax_history_multi/_states_table.html.erb', 
+			'app/views/ajax_history_multi/_zip_codes_table.html.erb'
+		]) %>
 	</div>
 </div>

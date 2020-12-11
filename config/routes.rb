@@ -19,7 +19,8 @@ Rails.application.routes.draw do
   resources :search
 	resources :ajax
   resources :ajax_history
-  get 'ajax_history_multi/states_table', controller: 'ajax_history_multi', action: 'states_table'
+  resources :ajax_history_js
+	get 'ajax_history_multi/states_table', controller: 'ajax_history_multi', action: 'states_table'
 	get 'ajax_history_multi/zip_codes_table', controller: 'ajax_history_multi', action: 'zip_codes_table'
 	resources :ajax_history_multi
 	resources :states

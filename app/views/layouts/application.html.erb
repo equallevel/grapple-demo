@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Grapple Demos</title>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= stylesheet_link_tag '//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'codemirror_initializer', 'data-turbolinks-track' => true %>
@@ -10,7 +10,7 @@
     <%= yield(:page_head) %>
     <%= csrf_meta_tags %>
   </head>
-  <body>
+  <body <%= @disable_turbolinks == true ? 'data-turbolinks="false"' : '' %>>
     <!--div class="header">
 		<%#= link_to "Grapple Demos", home_path %>
 	</div-->
@@ -32,6 +32,8 @@
               <ul class="dropdown-menu">
                 <li><%= link_to "AJAX", ajax_index_path %></li>
                 <li><%= link_to "AJAX w/History", ajax_history_index_path %></li>
+                <li><%= link_to "AJAX w/History and Namespaces", ajax_history_multi_index_path %></li>
+                <li><%= link_to "AJAX w/History.js", ajax_history_js_path, data: { turbolinks: false } %></li>
               </ul>
             </li>
             <!--/ajax -->

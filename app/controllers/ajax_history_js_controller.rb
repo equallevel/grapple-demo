@@ -1,8 +1,9 @@
-class AjaxHistoryController < ApplicationController
+class AjaxHistoryJsController < ApplicationController
 
 	RESULTS_PER_PAGE = 15
 
 	def index
+		@disable_turbolinks = true
 		@zip_codes = search_results
 	end
 

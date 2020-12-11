@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery-history
 //= require grapple
 //= require grapple-history
 //= require grapple-jquery

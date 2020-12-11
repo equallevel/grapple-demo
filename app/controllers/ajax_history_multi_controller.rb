@@ -33,9 +33,9 @@ protected
 				"%#{args[:query]}%", "%#{args[:query]}%", "%#{args[:query]}%"
 			)
 		end
-		sort_column = ZipCode.connection.quote_column_name(args[:sort])
-		sort_dir = args[:dir] == 'asc' ? 'ASC' : 'DESC'
-		model = model.order(sort_column + " " + sort_dir)
+		sort_column = params[:sort]
+		sort_dir = params[:dir] == 'asc' ? :asc : :desc
+		model = model.order(sort_column => sort_dir)
 		model.paginate(page: args[:page] || 1, per_page: RESULTS_PER_PAGE)
 	end
 
@@ -53,9 +53,9 @@ protected
 				"%#{args[:query]}%", "%#{args[:query]}%"
 			)
 		end
-		sort_column = State.connection.quote_column_name(args[:sort])
-		sort_dir = args[:dir] == 'asc' ? 'ASC' : 'DESC'
-		model = model.order(sort_column + " " + sort_dir)
+		sort_column = params[:sort]
+		sort_dir = params[:dir] == 'asc' ? :asc : :desc
+		model = model.order(sort_column => sort_dir)
 		model.paginate(page: args[:page] || 1, per_page: RESULTS_PER_PAGE)
 	end
 	
