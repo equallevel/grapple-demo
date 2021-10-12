@@ -141,6 +141,7 @@ DEPENDENCIES
   grapple
   i18n
   jquery-rails
+  nokogiri (>= 1.12.5)
   puma (~> 4.3.9)
   rails (~> 5.2.4)
   ruby-debug-ide

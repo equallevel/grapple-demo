@@ -26,6 +26,8 @@ gem 'spring', group: :development
 
 gem 'grapple'
 
+gem "nokogiri", ">= 1.12.5"
+
 # Use Puma as the app server
 gem 'puma', '~> 4.3.9'
 
