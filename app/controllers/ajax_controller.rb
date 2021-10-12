@@ -26,9 +26,8 @@ protected
 				"%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%"
 			)
 		end
-		sort_column = ZipCode.connection.quote_column_name(params[:sort])
-		sort_dir = params[:dir] == 'asc' ? 'ASC' : 'DESC'
-		model = model.order(sort_column + " " + sort_dir)
+		sort_dir = params[:dir] == 'asc' ? :asc : :desc
+		model = model.order(params[:sort] => sort_dir)
 		model.paginate(page: params[:page] || 1, per_page: RESULTS_PER_PAGE)
 	end
 	
