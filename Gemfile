@@ -27,7 +27,7 @@ gem 'spring', group: :development
 gem 'grapple'
 
 # Use Puma as the app server
-gem 'puma', '~> 3.7'
+gem 'puma', '~> 4.3'
 
 gem 'will_paginate'
 gem 'i18n'
