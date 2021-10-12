@@ -31,7 +31,7 @@ task :load_fixtures, [] => :environment do |t, args|
 				next
 			end
 			
-			if ( (i / line_count * 100.0 + 1.0) % 5 ) - 1.0 < Float::EPSILON
+			if ( (i / line_count * 100.0 + 1.0) % 100 ) - 1.0 < Float::EPSILON
 				puts "#{(i / line_count * 100.0).round}% done..."
 			end
 			
