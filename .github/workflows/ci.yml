@@ -1,0 +1,103 @@
+name: CI - Grapple Demo
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "Release tag to use as the Docker image tag for manual runs"
+        required: true
+        type: string
+  release:
+    types:
+      - published
+  push:
+    branches:
+      - "**"
+
+permissions:
+  id-token: write
+  contents: read
+  actions: write
+  packages: read
+
+env:
+  AWS_REGION: us-east-1
+  AWS_ROLE: arn:aws:iam::396518506015:role/GitHub_OIDC
+  ECR_REPO_NONPROD: grapple-demo
+
+jobs:
+  test-oidc:
+    name: Verify OIDC -> AWS Trust
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Configure AWS Credentials via OIDC
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ env.AWS_ROLE }}
+          aws-region: ${{ env.AWS_REGION }}
+          role-session-name: oidc-connectivity-test
+      - name: Verify Identity STS
+        shell: bash
+        run: |
+          set -euo pipefail
+          aws sts get-caller-identity
+      - name: Verify ECR repository exists
+        shell: bash
+        run: |
+          set -euo pipefail
+          aws ecr describe-repositories \
+            --repository-names "${ECR_REPO_NONPROD}" \
+            --region "${AWS_REGION}"
+
+  test:
+    name: Test
+    needs: test-oidc
+    uses: equallevel/github-workflows-template/.github/workflows/ecr-ecs-test.yml@gh-migration
+    with:
+      working_directory: "."
+      dockerfile_path: Dockerfile
+      checkout_submodules: false
+      use_github_app: true
+      github_app_owner: equallevel
+      github_app_repositories: |
+        grapple-demo
+      ruby_version: "2.5"
+      node_version: ""
+      python_version: ""
+      install_command: |
+        bundle install --jobs=4 --retry=3
+      test_command: |
+        echo "No tests defined, skipping."
+    secrets:
+      app_id: ${{ secrets.APP_ID }}
+      private_key: ${{ secrets.PRIVATE_KEY }}
+
+  build:
+    name: Build and Push Image
+    needs:
+      - test-oidc
+      - test
+    if: |
+      github.event_name == 'release' ||
+      github.event_name == 'workflow_dispatch' ||
+      github.ref == 'refs/heads/master'
+    uses: equallevel/github-workflows-template/.github/workflows/ecr-ecs-build.yml@gh-migration
+    with:
+      aws_role: arn:aws:iam::396518506015:role/GitHub_OIDC
+      aws_region: us-east-1
+      ecr_repo_nonprod: grapple-demo
+      working_directory: "."
+      dockerfile_path: Dockerfile
+      checkout_submodules: false
+      use_github_app: true
+      github_app_owner: equallevel
+      github_app_repositories: |
+        grapple-demo
+      image_tag: ${{ github.sha }}
+      platforms: linux/amd64
+    secrets:
+      app_id: ${{ secrets.APP_ID }}
+      private_key: ${{ secrets.PRIVATE_KEY }}
+      bundle_config: ${{ secrets.BUNDLE_CONFIG }}
