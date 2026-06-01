@@ -10,9 +10,10 @@ on:
   # release:
   #   types:
   #     - published
-  # push:
-  #   branches:
-  #     - "**"
+  push:
+    branches:
+      # - "**"
+      - test_tbd
 
 permissions:
   id-token: write
@@ -23,7 +24,8 @@ permissions:
 env:
   AWS_REGION: us-east-1
   AWS_ROLE: arn:aws:iam::396518506015:role/GitHub_OIDC
-  ECR_REPO_NONPROD: grapple-demo
+  # ECR_REPO_NONPROD: grapple-demo
+  ECR_REPO_NONPROD: tbd_repo_image
 
 jobs:
   test-oidc:
@@ -79,15 +81,16 @@ jobs:
     needs:
       - test-oidc
       - test
-    if: |
-      github.event_name == 'release' ||
-      github.event_name == 'workflow_dispatch' ||
-      github.ref == 'refs/heads/master'
+    # if: |
+    #   github.event_name == 'release' ||
+    #   github.event_name == 'workflow_dispatch' ||
+    #   github.ref == 'refs/heads/master'
     uses: equallevel/github-workflows-template/.github/workflows/ecr-ecs-build.yml@gh-migration
     with:
       aws_role: arn:aws:iam::396518506015:role/GitHub_OIDC
       aws_region: us-east-1
-      ecr_repo_nonprod: grapple-demo
+      # ecr_repo_nonprod: grapple-demo
+      ecr_repo_nonprod: tbd_repo_image
       working_directory: "."
       dockerfile_path: Dockerfile
       checkout_submodules: false
