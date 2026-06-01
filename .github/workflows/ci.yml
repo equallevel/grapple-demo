@@ -7,12 +7,12 @@ on:
         description: "Release tag to use as the Docker image tag for manual runs"
         required: true
         type: string
-  release:
-    types:
-      - published
-  push:
-    branches:
-      - "**"
+  # release:
+  #   types:
+  #     - published
+  # push:
+  #   branches:
+  #     - "**"
 
 permissions:
   id-token: write
