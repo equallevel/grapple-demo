@@ -2,18 +2,13 @@ name: CI - Grapple Demo
 
 on:
   workflow_dispatch:
-    inputs:
-      release_tag:
-        description: "Release tag to use as the Docker image tag for manual runs"
-        required: true
-        type: string
   # release:
   #   types:
   #     - published
-  push:
-    branches:
-      # - "**"
-      - test_tbd
+  # push:
+  #   branches:
+  #     # - "**"
+  #     - test_tbd
 
 permissions:
   id-token: write
